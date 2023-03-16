@@ -1,5 +1,9 @@
+necklaceY = 0;
+necklaceX = 0;
+
 function preload()
 {
+    necklace = loadImage('https://i.postimg.cc/B6YQ1xNJ/Silver-Necklace.png');
 }
 
 function setup()
@@ -25,14 +29,17 @@ function gotPose(results)
     if(results.length > 0)
     {
         console.log(results);
-        console.log("nose x =" + results[0].pose.nose.x);
-        console.log("nose y =" + results[0].pose.nose.y);
+        necklaceX = results[0].pose.nose.x - 35;
+        necklaceY = results[0].pose.nose.y + 70;
+        console.log("necklace x = " + necklaceX);
+        console.log("necklace y = " + necklaceY);
     }
 }
 
 function draw()
 {
     image(video,0,0,300,300);
+    image(necklace , necklaceX , necklaceY , 90 , 90);
 }
 
 function take_snapshot()
